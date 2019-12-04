@@ -3,11 +3,13 @@
 
 // 1. logo (click)
 
-const logo = document.querySelector("h1");
-logo.addEventListener("click", () => {
+const logo = document.querySelector(".logo-heading");
+logo.addEventListener("click", (event) => {
     logo.style.transform = "rotateY(-360deg)";
     logo.style.transitionDuration = "1000ms";
     logo.style.color = "green";
+    event.stopPropagation();
+
 });
 
 // 2. hover (mouseover)
@@ -62,3 +64,45 @@ document.body.addEventListener("wheel", (e) => {
     top.style.backgroundColor = "rgb("+e.offsetX+","+e.offsetY+",30)";
 });
 
+// 9. mouseenter
+const pictures = document.querySelectorAll(".img-content");
+
+pictures.forEach((picture) => {
+    picture.addEventListener("mouseenter", () => {
+        picture.style.transform = "scale(1.2)";    
+        picture.style.transition = "transform 0.25s";
+    });
+});
+
+pictures.forEach((picture) => {
+    picture.addEventListener("mouseleave", () => {
+        picture.style.transform = "scale(1)";            
+    });
+});
+
+
+// 10. resize
+const bottomImg = document.querySelector(".content-destination img")
+
+window.addEventListener("resize", () => {
+    bottomImg.src = "https://devclass.com/wp-content/uploads/2018/10/lambda.jpeg"; 
+});
+
+
+
+
+
+
+
+
+
+// event propagation
+
+
+
+// prevent default on Nav
+let stopNav = document.querySelector(".nav-container");
+
+stopNav.addEventListener("click", (e) => {
+    e.preventDefault();
+});
